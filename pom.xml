@@ -20,12 +20,14 @@
 
   <dependencies>
 
+    <!-- Tomcat -->
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
       <version>7.0.64</version>
     </dependency>
 
+    <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -56,6 +58,13 @@
       <version>${org.springframework.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+
+    <!-- AspectJ -->
 
     <dependency>
       <groupId>org.aspectj</groupId>
@@ -64,21 +73,26 @@
     </dependency>
 
     <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.6.11</version>
+    </dependency>
+
+    <!-- Mybatis -->
+
+    <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
       <version>${org.mybatis.spring.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
       <version>${org.mybatis.version}</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjrt</artifactId>
-      <version>1.6.11</version>
-    </dependency>
+    <!-- Jackson -->
 
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
@@ -86,20 +100,14 @@
       <version>1.9.12</version>
     </dependency>
 
-    <dependency>
-      <groupId>commons-dbcp</groupId>
-      <artifactId>commons-dbcp</artifactId>
-      <version>1.4</version>
-      <!--<scope>runtime</scope>-->
-    </dependency>
-
-
+    <!-- Logback -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.1.2</version>
       <scope>compile</scope>
     </dependency>
+
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
@@ -107,10 +115,20 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- MySQL-->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.6</version>
+    </dependency>
+
+    <!-- Others -->
+
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.4</version>
+      <!--<scope>runtime</scope>-->
     </dependency>
 
     <dependency>
@@ -177,9 +195,6 @@
       <artifactId>commons-io</artifactId>
       <version>2.0.1</version>
     </dependency>
-
-
-
 
     <!-- mybatis pager -->
 
