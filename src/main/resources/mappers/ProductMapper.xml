@@ -76,12 +76,14 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
+      <!--<if test="createTime != null" >-->
+        <!--create_time,-->
+      <!--</if>-->
+      <!--<if test="updateTime != null" >-->
+        <!--update_time,-->
+      <!--</if>-->
+      create_time,
+      update_time
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -114,12 +116,14 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        now(),
-      </if>
-      <if test="updateTime != null" >
-        now(),
-      </if>
+      <!--<if test="createTime != null" >-->
+        <!--now(),-->
+      <!--</if>-->
+      <!--<if test="updateTime != null" >-->
+        <!--now(),-->
+      <!--</if>-->
+      now(),
+      now()
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.mmall.pojo.Product" >
@@ -174,4 +178,42 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectProductList" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List" />
+    FROM mmall_product
+    ORDER BY id ASC
+  </select>
+
+  <select id="selectProductListByNameAndProductId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List" />
+    FROM mmall_product
+    <where>
+      <if test="productName != null">
+        AND name like #{productName}
+      </if>
+      <if test="productId != null">
+        AND id = #{productId}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectByNameAndCategoryIds" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM mmall_product
+    WHERE status = 1
+    <if test="productName != null">
+      AND name LIKE #{productName}
+    </if>
+    <if test="categoryIdList != null">
+      AND category_id IN
+      <foreach collection="categoryIdList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+
 </mapper>

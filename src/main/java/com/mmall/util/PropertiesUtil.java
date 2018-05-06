@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * Created by geely
+ * Created by Zhang Chen
  */
 public class PropertiesUtil {
 
@@ -17,11 +17,13 @@ public class PropertiesUtil {
 
     private static Properties props;
 
+    // execute once when class is loaded
     static {
         String fileName = "mmall.properties";
         props = new Properties();
         try {
-            props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName),"UTF-8"));
+            props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader()
+                    .getResourceAsStream(fileName),"UTF-8"));
         } catch (IOException e) {
             logger.error("配置文件读取异常",e);
         }
